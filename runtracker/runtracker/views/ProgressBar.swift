@@ -110,7 +110,7 @@ class ProgressBar: ProgressBarBase {
         fatalError()
     }
 
-    required init(progressColor: UIColor, progress: Double) {
+    required init(progress: Double, progressColor: UIColor = .systemGreen) {
         self.progressColor = progressColor
         self.progress = progress
         super.init()
@@ -141,13 +141,13 @@ struct SUIProgressBar: UIViewRepresentable {
     private let color: UIColor
     private let progress: Double
 
-    init(color: UIColor, progress: Double) {
+    init(progress: Double, color: UIColor = .systemGreen) {
         self.color = color
         self.progress = progress
     }
 
     func makeUIView(context: Context) -> ProgressBar {
-        ProgressBar(progressColor: color, progress: progress)
+        ProgressBar(progress: progress, progressColor: color)
     }
 
     func updateUIView(_ uiView: ProgressBar, context: Context) { }
@@ -162,7 +162,7 @@ struct SUIProgressBar_Previews: PreviewProvider {
                     Text("75% filled")
                     Spacer()
                 }
-                SUIProgressBar(color: .systemGreen, progress: 0.75)
+                SUIProgressBar(progress: 0.75)
                     .frame(height: Bar.barHeight)
             }
 
@@ -171,7 +171,7 @@ struct SUIProgressBar_Previews: PreviewProvider {
                     Text("200% filled")
                     Spacer()
                 }
-                SUIProgressBar(color: .systemGreen, progress: 2)
+                SUIProgressBar(progress: 2)
                     .frame(height: Bar.barHeight)
             }
 
@@ -180,7 +180,7 @@ struct SUIProgressBar_Previews: PreviewProvider {
                     Text("0% filled")
                     Spacer()
                 }
-                SUIProgressBar(color: .systemGreen, progress: 0)
+                SUIProgressBar(progress: 0)
                     .frame(height: Bar.barHeight)
             }
         }
@@ -302,7 +302,7 @@ struct SUIMultiSegmentProgressBar_Previews: PreviewProvider {
                     100)
                     .frame(height: Bar.barHeight)
             }
-        }
+        } 
 
         return VStack {
             list.colorScheme(.dark)
