@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:CombinePlayground.playground">
+   </FileRef>
+   <FileRef
       location = "group:runtracker/runtracker.xcodeproj">
    </FileRef>
    <FileRef
