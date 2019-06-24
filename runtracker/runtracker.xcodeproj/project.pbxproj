@@ -17,7 +17,7 @@
 		190BBC0622B2C1D300D993B8 /* runtrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190BBC0522B2C1D300D993B8 /* runtrackerUITests.swift */; };
 		190BBC1522B2C21A00D993B8 /* rtcore in Frameworks */ = {isa = PBXBuildFile; productRef = 190BBC1422B2C21A00D993B8 /* rtcore */; };
 		190BBC1722B2C31100D993B8 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190BBC1622B2C31100D993B8 /* HealthKit.framework */; };
-		1953E7CA22B6BB7D00FF7F61 /* MainOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1953E7C922B6BB7D00FF7F61 /* MainOverview.swift */; };
+		1953E7CA22B6BB7D00FF7F61 /* ProgressOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1953E7C922B6BB7D00FF7F61 /* ProgressOverview.swift */; };
 		19764F7222B2C4E300E898D0 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19764F7122B2C4E300E898D0 /* ProgressBar.swift */; };
 		19C09A9E22B412EF00097BED /* WeekOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C09A9D22B412EF00097BED /* WeekOverview.swift */; };
 		19C09AA022B4135300097BED /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C09A9F22B4135300097BED /* Panel.swift */; };
@@ -60,7 +60,7 @@
 		190BBC0722B2C1D300D993B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		190BBC1622B2C31100D993B8 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		190BBC1822B2C32A00D993B8 /* runtracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = runtracker.entitlements; sourceTree = "<group>"; };
-		1953E7C922B6BB7D00FF7F61 /* MainOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainOverview.swift; sourceTree = "<group>"; };
+		1953E7C922B6BB7D00FF7F61 /* ProgressOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressOverview.swift; sourceTree = "<group>"; };
 		19764F7122B2C4E300E898D0 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		19C09A9D22B412EF00097BED /* WeekOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekOverview.swift; sourceTree = "<group>"; };
 		19C09A9F22B4135300097BED /* Panel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
@@ -175,7 +175,7 @@
 				19764F7122B2C4E300E898D0 /* ProgressBar.swift */,
 				19C09A9D22B412EF00097BED /* WeekOverview.swift */,
 				19C09A9F22B4135300097BED /* Panel.swift */,
-				1953E7C922B6BB7D00FF7F61 /* MainOverview.swift */,
+				1953E7C922B6BB7D00FF7F61 /* ProgressOverview.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -332,7 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				19D3F1E522B4DFF8008CB1F6 /* Double+decimals.swift in Sources */,
-				1953E7CA22B6BB7D00FF7F61 /* MainOverview.swift in Sources */,
+				1953E7CA22B6BB7D00FF7F61 /* ProgressOverview.swift in Sources */,
 				19C09A9E22B412EF00097BED /* WeekOverview.swift in Sources */,
 				19C09AA022B4135300097BED /* Panel.swift in Sources */,
 				190BBBE422B2C1D200D993B8 /* AppDelegate.swift in Sources */,

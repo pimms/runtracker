@@ -1,7 +1,7 @@
 import SwiftUI
 import rtcore
 
-struct MainOverview : View {
+struct ProgressOverview : View {
     @EnvironmentObject var runPublisher: RunPublisher
 
     var body: some View {
@@ -12,7 +12,7 @@ struct MainOverview : View {
 }
 
 #if DEBUG
-struct MainOverview_Previews : PreviewProvider {
+struct ProgressOverview_Previews : PreviewProvider {
     static var previews: some View {
         let repo = MockRunRepository()
         repo.runSummaries = [
@@ -21,11 +21,11 @@ struct MainOverview_Previews : PreviewProvider {
         ]
         let publisher = RunPublisher(runRepository: repo)
 
-        let mainView = MainOverview().environmentObject(publisher)
+        let overview = ProgressOverview().environmentObject(publisher)
 
         return VStack {
-            mainView.colorScheme(.dark)
-            mainView.colorScheme(.light)
+            overview.colorScheme(.dark)
+            overview.colorScheme(.light)
         }
     }
 }
