@@ -11,7 +11,8 @@ struct ProgressOverview : View {
 
         return VStack {
             WeeklyDistanceProgressView(summary: distanceSummary)
-        }
+            Spacer()
+        }.padding()
     }
 }
 

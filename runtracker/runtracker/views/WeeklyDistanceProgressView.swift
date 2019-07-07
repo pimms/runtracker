@@ -20,9 +20,9 @@ struct WeeklyDistanceProgressView : View {
 
         if let goalMeters = summary.distanceGoal?.distanceInMeters {
             let goalKm = goalMeters / 1000.0
-            return "\(currentKm) km / \(goalKm) km"
+            return "\(currentKm.string(withDecimals: 1)) km / \(goalKm.string(withDecimals: 1)) km"
         } else {
-            return "\(currentKm) km"
+            return "\(currentKm.string(withDecimals: 1)) km"
         }
     }
 

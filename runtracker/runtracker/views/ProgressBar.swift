@@ -273,7 +273,9 @@ struct SUIMultiSegmentProgressBar: UIViewRepresentable {
     }
 
     func makeUIView(context: Context) -> MultiSegmentProgressBar {
-        MultiSegmentProgressBar(rawSegmentValues: rawSegmentValues, goalValue: goalValue)
+        let view = MultiSegmentProgressBar(rawSegmentValues: rawSegmentValues, goalValue: goalValue)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }
 
     func updateUIView(_ uiView: MultiSegmentProgressBar, context: Context) {}

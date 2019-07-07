@@ -14,7 +14,6 @@ class RunPublisher: BindableObject {
 
     init(runRepository: RunRepositoryProtocol) {
         self.runRepository = runRepository
-        refresh()
     }
 
     func refresh() {

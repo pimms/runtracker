@@ -11,10 +11,16 @@ public class RunRepository : RunRepositoryProtocol {
     }
 
     func loadRuns(completion: @escaping () -> Void) {
-        fetchWorkouts { [weak self] workouts in
-            self?.runSummaries = workouts
-            completion()
-        }
+        let toRead = Set(arrayLiteral: HKWorkoutType.workoutType())
+
+        healthStore.requestAuthorization(toShare: nil, read: toRead, completion: { [weak self] _, _ in
+            self?.fetchWorkouts { [weak self] workouts in
+                DispatchQueue.main.async { [weak self] in
+                    self?.runSummaries = workouts
+                    completion()
+                }
+            }
+        })
     }
 
     private func fetchWorkouts(completion: @escaping ([HKWorkout]) -> Void) {
