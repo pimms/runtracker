@@ -1,29 +1,30 @@
 import SwiftUI
 
-protocol WeekOverviewViewModel {
-    var runDistances: [Double] { get }
-    var goalDistance: Double { get }
+struct WeeklySummary {
+    let runs: [RunSummary]
+    let distanceGoal: WeeklyDistanceGoal?
 }
 
 struct WeekOverview : View {
-    private let viewModel: WeekOverviewViewModel
+    private let weeklySummary: WeeklySummary
 
-    init(viewModel: WeekOverviewViewModel) {
-        self.viewModel = viewModel
+    init(weeklySummary: WeeklySummary) {
+        self.weeklySummary = weeklySummary
     }
 
     var body: some View {
-        let sum = viewModel.runDistances.reduce(0, +)
+        let distances = weeklySummary.runs.map { $0.distance }
+        let sum = distances.reduce(0, +)
 
         return Panel(title: "Weekly Progress") {
             VStack {
                 SUIMultiSegmentProgressBar(
-                    rawSegmentValues: viewModel.runDistances,
-                    goalValue: viewModel.goalDistance
+                    rawSegmentValues: distances,
+                    goalValue: weeklySummary.distanceGoal?.distanceInMeters
                 ).frame(height: Bar.barHeight)
 
                 HStack {
-                    Text("\(sum.string(withDecimals: 1)) / \(viewModel.goalDistance.string(withDecimals: 1))")
+                    Text("\(sum.string(withDecimals: 1)) / TODO")
                         .font(.caption)
                     Spacer()
                 }
@@ -34,20 +35,29 @@ struct WeekOverview : View {
 
 #if DEBUG
 struct WeekOverview_Previews : PreviewProvider {
-    private struct DemoModel: WeekOverviewViewModel {
-        let runDistances: [Double]
-        let goalDistance: Double
+    static private func run(_ distance: Double) -> MockRunSummary {
+        return MockRunSummary(date: Date(), distance: distance)
+    }
+
+    static private func dgoal(_ distance: Double) -> WeeklyDistanceGoal {
+        return WeeklyDistanceGoal(distanceInMeters: distance)
     }
 
     static var previews: some View {
-        let model1 = DemoModel(runDistances: [20, 50], goalDistance: 30)
-        let model2 = DemoModel(runDistances: [1, 1, 1], goalDistance: 5)
-        let model3 = DemoModel(runDistances: [1, 1, 1, 1, 1], goalDistance: 6)
+        let summary1 = WeeklySummary(
+            runs: [run(1), run(4)],
+            distanceGoal: dgoal(2))
+        let summary2 = WeeklySummary(
+            runs: [run(1), run(1), run(1)],
+            distanceGoal: dgoal(5))
+        let summary3 = WeeklySummary(
+            runs: [run(1), run(1), run(1), run(1), run(1), run(1)],
+            distanceGoal: dgoal(6))
 
         let list = List {
-            WeekOverview(viewModel: model1)
-            WeekOverview(viewModel: model2)
-            WeekOverview(viewModel: model3)
+            WeekOverview(weeklySummary: summary1)
+            WeekOverview(weeklySummary: summary2)
+            WeekOverview(weeklySummary: summary3)
         }
 
         return VStack {

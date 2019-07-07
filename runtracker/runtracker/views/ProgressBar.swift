@@ -197,13 +197,13 @@ struct SUIProgressBar_Previews: PreviewProvider {
 
 class MultiSegmentProgressBar: ProgressBarBase {
     private let rawSegmentValues: [Double]
-    private let goalValue: Double
+    private let goalValue: Double?
 
     required init?(coder aDecoder: NSCoder) {
         fatalError()
     }
 
-    required init(rawSegmentValues: [Double], goalValue: Double) {
+    required init(rawSegmentValues: [Double], goalValue: Double?) {
         self.rawSegmentValues = rawSegmentValues
         self.goalValue = goalValue
         super.init(frame: .zero)
@@ -213,12 +213,18 @@ class MultiSegmentProgressBar: ProgressBarBase {
     private func setup() {
         let sum = rawSegmentValues.reduce(0, +)
 
-        if sum > goalValue {
-            markerFraction = CGFloat(goalValue / sum)
+        let widthDenominator: Double
+        if let goal = goalValue {
+            if sum > goal {
+                markerFraction = CGFloat(goal / sum)
+            }
+
+            widthDenominator = sum > goal ? sum : goal
+        } else {
+            widthDenominator = sum
         }
 
-        let denominator = sum > goalValue ? sum : goalValue
-        let fractionValues = rawSegmentValues.map { CGFloat($0 / denominator) }
+        let fractionValues = rawSegmentValues.map { CGFloat($0 / widthDenominator) }
 
         let colors = colorArray()
 
@@ -259,9 +265,9 @@ struct SUIMultiSegmentProgressBar: UIViewRepresentable {
     typealias UIViewType = MultiSegmentProgressBar
 
     private let rawSegmentValues: [Double]
-    private let goalValue: Double
+    private let goalValue: Double?
 
-    init(rawSegmentValues: [Double], goalValue: Double) {
+    init(rawSegmentValues: [Double], goalValue: Double?) {
         self.rawSegmentValues = rawSegmentValues
         self.goalValue = goalValue
     }
@@ -303,6 +309,43 @@ struct SUIMultiSegmentProgressBar_Previews: PreviewProvider {
                     .frame(height: Bar.barHeight)
             }
         } 
+
+        return VStack {
+            list.colorScheme(.dark)
+            list.colorScheme(.light)
+        }
+    }
+}
+
+struct SUIMultiSegmentProgressBarNoGoal_Previews: PreviewProvider {
+    static var previews: some View {
+        let list = List {
+            VStack {
+                HStack {
+                    Text("One value, 30%")
+                    Spacer()
+                }
+                SUIMultiSegmentProgressBar(rawSegmentValues: [30], goalValue: nil)
+                    .frame(height: Bar.barHeight)
+            }
+            VStack {
+                HStack {
+                    Text("Two values, 60%")
+                    Spacer()
+                }
+                SUIMultiSegmentProgressBar(rawSegmentValues: [20, 40], goalValue: nil)
+                    .frame(height: Bar.barHeight)
+            }
+            VStack {
+                HStack {
+                    Text("Three values, 150%")
+                    Spacer()
+                }
+                SUIMultiSegmentProgressBar(rawSegmentValues: [20, 40, 90], goalValue:
+                    nil)
+                    .frame(height: Bar.barHeight)
+            }
+        }
 
         return VStack {
             list.colorScheme(.dark)
