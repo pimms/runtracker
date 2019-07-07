@@ -2,7 +2,7 @@ import Foundation
 import HealthKit
 
 public class RunRepository : RunRepositoryProtocol {
-    public private(set) var runSummaries: [RunSummary] = []
+    private(set) var runSummaries: [RunSummary] = []
 
     private let healthStore: HKHealthStore
 
@@ -10,7 +10,7 @@ public class RunRepository : RunRepositoryProtocol {
         self.healthStore = healthStore
     }
 
-    public func loadRuns(completion: @escaping () -> Void) {
+    func loadRuns(completion: @escaping () -> Void) {
         fetchWorkouts { [weak self] workouts in
             self?.runSummaries = workouts
             completion()

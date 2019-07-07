@@ -1,7 +1,7 @@
 import Foundation
 import HealthKit
 
-public protocol RunSummary {
+protocol RunSummary {
     var date: Date { get }
 
     /// The distance of the run in meters
@@ -9,6 +9,6 @@ public protocol RunSummary {
 }
 
 extension HKWorkout : RunSummary {
-    public var date: Date { endDate }
-    public var distance: Double { distanceInMeters }
+    var date: Date { endDate }
+    var distance: Double { distanceInMeters }
 }

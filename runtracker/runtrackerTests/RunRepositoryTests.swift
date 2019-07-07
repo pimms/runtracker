@@ -1,6 +1,6 @@
 import XCTest
 import HealthKit
-@testable import rtcore
+@testable import runtracker
 
 final class RunRepositoryTests : XCTestCase {
     func testFetchCallsCompletionHandler() {

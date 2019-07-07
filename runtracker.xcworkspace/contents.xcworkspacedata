@@ -7,7 +7,4 @@
    <FileRef
       location = "group:runtracker/runtracker.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:rtcore">
-   </FileRef>
 </Workspace>

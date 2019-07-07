@@ -1,9 +1,8 @@
 import SwiftUI
-import rtcore
 
 struct ProgressOverview : View {
     @EnvironmentObject var runPublisher: RunPublisher
-
+    @EnvironmentObject var goalRepo: WeeklyGoalRepository
 
     var body: some View {
         VStack {
@@ -22,7 +21,10 @@ struct ProgressOverview_Previews : PreviewProvider {
         ]
 
         let publisher = RunPublisher(runRepository: runRepo)
-        let goalRepo = StaticGoalRepository()
+
+        let goalRepo = WeeklyGoalRepository()
+        goalRepo.weeklyDistanceGoal = WeeklyDistanceGoal(distanceInMeters: 30_000)
+        goalRepo.weeklyTimeGoal = WeeklyTimeGoal(durationInMinutes: 60 * 3)
 
         let overview = ProgressOverview()
             .environmentObject(publisher)
