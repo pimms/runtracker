@@ -5,8 +5,12 @@ struct ProgressOverview : View {
     @EnvironmentObject var goalRepo: WeeklyGoalRepository
 
     var body: some View {
-        VStack {
-            Text("Hi mom!")
+        let distanceSummary = WeeklyDistanceSummaryModel(
+            runs: runPublisher.runs,
+            distanceGoal: goalRepo.weeklyDistanceGoal)
+
+        return VStack {
+            WeeklyDistanceProgressView(summary: distanceSummary)
         }
     }
 }
@@ -16,8 +20,8 @@ struct ProgressOverview_Previews : PreviewProvider {
     static var previews: some View {
         let runRepo = MockRunRepository()
         runRepo.runSummaries = [
-            MockRunSummary(date: Date(), distance: 10.1),
-            MockRunSummary(date: Date(), distance: 3.5)
+            MockRunSummary(date: Date(), distance: 10_100),
+            MockRunSummary(date: Date(), distance: 3_500)
         ]
 
         let publisher = RunPublisher(runRepository: runRepo)
@@ -31,8 +35,8 @@ struct ProgressOverview_Previews : PreviewProvider {
             .environmentObject(goalRepo)
 
         return VStack {
-            overview.colorScheme(.dark)
-            overview.colorScheme(.light)
+            List { overview }.colorScheme(.dark)
+            List { overview }.colorScheme(.light)
         }
     }
 }
