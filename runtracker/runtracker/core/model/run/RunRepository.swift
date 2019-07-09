@@ -50,5 +50,4 @@ open class RunRepository : RunRepositoryProtocol, BindableObject {
 
         healthStore.execute(query)
     }
-
 }
