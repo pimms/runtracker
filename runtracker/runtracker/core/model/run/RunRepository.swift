@@ -14,6 +14,8 @@ open class RunRepository : RunRepositoryProtocol, BindableObject {
         self.healthStore = healthStore
     }
 
+    // MARK: - Querying
+
     func refresh() {
         loadRuns { [weak self] runs in
             DispatchQueue.main.async { [weak self] in
@@ -48,4 +50,5 @@ open class RunRepository : RunRepositoryProtocol, BindableObject {
 
         healthStore.execute(query)
     }
+
 }
