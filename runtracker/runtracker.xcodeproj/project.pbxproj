@@ -17,11 +17,9 @@
 		190BBC0622B2C1D300D993B8 /* runtrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190BBC0522B2C1D300D993B8 /* runtrackerUITests.swift */; };
 		190BBC1722B2C31100D993B8 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190BBC1622B2C31100D993B8 /* HealthKit.framework */; };
 		1953E7CA22B6BB7D00FF7F61 /* ProgressOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1953E7C922B6BB7D00FF7F61 /* ProgressOverview.swift */; };
-		196EAB7622D1F18F00DE711B /* RunRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196EAB7522D1F18F00DE711B /* RunRepositoryTests.swift */; };
 		196EAB7822D1F1BE00DE711B /* HKWorkout+distanceInMeters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196EAB7722D1F1BE00DE711B /* HKWorkout+distanceInMeters.swift */; };
 		196EAB7B22D1F2BA00DE711B /* Goals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196EAB7222D1F18000DE711B /* Goals.swift */; };
 		196EAB7C22D1F2BD00DE711B /* RunRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196EAB6C22D1F18000DE711B /* RunRepository.swift */; };
-		196EAB7D22D1F2BD00DE711B /* RunPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196EAB6D22D1F18000DE711B /* RunPublisher.swift */; };
 		196EAB7E22D1F2BD00DE711B /* RunSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196EAB6E22D1F18000DE711B /* RunSummary.swift */; };
 		196EAB7F22D1F2BD00DE711B /* RunRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196EAB6F22D1F18000DE711B /* RunRepositoryProtocol.swift */; };
 		196EAB8022D1F2BD00DE711B /* MockRunRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196EAB7022D1F18000DE711B /* MockRunRepository.swift */; };
@@ -70,12 +68,10 @@
 		190BBC1822B2C32A00D993B8 /* runtracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = runtracker.entitlements; sourceTree = "<group>"; };
 		1953E7C922B6BB7D00FF7F61 /* ProgressOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressOverview.swift; sourceTree = "<group>"; };
 		196EAB6C22D1F18000DE711B /* RunRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRepository.swift; sourceTree = "<group>"; };
-		196EAB6D22D1F18000DE711B /* RunPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunPublisher.swift; sourceTree = "<group>"; };
 		196EAB6E22D1F18000DE711B /* RunSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSummary.swift; sourceTree = "<group>"; };
 		196EAB6F22D1F18000DE711B /* RunRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRepositoryProtocol.swift; sourceTree = "<group>"; };
 		196EAB7022D1F18000DE711B /* MockRunRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRunRepository.swift; sourceTree = "<group>"; };
 		196EAB7222D1F18000DE711B /* Goals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goals.swift; sourceTree = "<group>"; };
-		196EAB7522D1F18F00DE711B /* RunRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRepositoryTests.swift; sourceTree = "<group>"; };
 		196EAB7722D1F1BE00DE711B /* HKWorkout+distanceInMeters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HKWorkout+distanceInMeters.swift"; sourceTree = "<group>"; };
 		19764F7122B2C4E300E898D0 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		198DB8AA22D1FD050002C2BC /* WeeklyGoalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyGoalRepository.swift; sourceTree = "<group>"; };
@@ -163,7 +159,6 @@
 		190BBBF922B2C1D300D993B8 /* runtrackerTests */ = {
 			isa = PBXGroup;
 			children = (
-				196EAB7522D1F18F00DE711B /* RunRepositoryTests.swift */,
 				190BBBFA22B2C1D300D993B8 /* runtrackerTests.swift */,
 				190BBBFC22B2C1D300D993B8 /* Info.plist */,
 			);
@@ -219,7 +214,6 @@
 			isa = PBXGroup;
 			children = (
 				196EAB6C22D1F18000DE711B /* RunRepository.swift */,
-				196EAB6D22D1F18000DE711B /* RunPublisher.swift */,
 				196EAB6E22D1F18000DE711B /* RunSummary.swift */,
 				196EAB6F22D1F18000DE711B /* RunRepositoryProtocol.swift */,
 				196EAB7022D1F18000DE711B /* MockRunRepository.swift */,
@@ -387,7 +381,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				196EAB7D22D1F2BD00DE711B /* RunPublisher.swift in Sources */,
 				196EAB7B22D1F2BA00DE711B /* Goals.swift in Sources */,
 				19D3F1E522B4DFF8008CB1F6 /* Double+decimals.swift in Sources */,
 				1953E7CA22B6BB7D00FF7F61 /* ProgressOverview.swift in Sources */,
@@ -413,7 +406,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				190BBBFB22B2C1D300D993B8 /* runtrackerTests.swift in Sources */,
-				196EAB7622D1F18F00DE711B /* RunRepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

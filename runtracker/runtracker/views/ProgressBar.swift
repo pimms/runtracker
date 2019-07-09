@@ -150,7 +150,9 @@ struct SUIProgressBar: UIViewRepresentable {
         ProgressBar(progress: progress, progressColor: color)
     }
 
-    func updateUIView(_ uiView: ProgressBar, context: Context) { }
+    func updateUIView(_ uiView: ProgressBar, context: Context) {
+        // TODO: Update the progress view
+    }
 }
 
 #if DEBUG
@@ -196,8 +198,10 @@ struct SUIProgressBar_Previews: PreviewProvider {
 // MARK: - MultiSegmentProgressBar
 
 class MultiSegmentProgressBar: ProgressBarBase {
-    private let rawSegmentValues: [Double]
-    private let goalValue: Double?
+    var rawSegmentValues: [Double] { didSet { resetBars() } }
+    var goalValue: Double? { didSet { updateGoalMarker() } }
+
+    private var bars: [Bar] = []
 
     required init?(coder aDecoder: NSCoder) {
         fatalError()
@@ -207,27 +211,27 @@ class MultiSegmentProgressBar: ProgressBarBase {
         self.rawSegmentValues = rawSegmentValues
         self.goalValue = goalValue
         super.init(frame: .zero)
-        setup()
+
+        updateGoalMarker()
+        setupBars()
     }
 
-    private func setup() {
+    private func resetBars() {
+        print("Resetting: \(rawSegmentValues.count) bars")
+        removeBars()
+        setupBars()
+    }
+
+    private func removeBars() {
+        backgroundBar.subviews.forEach { $0.removeFromSuperview() }
+    }
+
+    private func setupBars() {
         let sum = rawSegmentValues.reduce(0, +)
-
-        let widthDenominator: Double
-        if let goal = goalValue {
-            if sum > goal {
-                markerFraction = CGFloat(goal / sum)
-            }
-
-            widthDenominator = sum > goal ? sum : goal
-        } else {
-            widthDenominator = sum
-        }
+        let widthDenominator = max(goalValue ?? sum, sum)
 
         let fractionValues = rawSegmentValues.map { CGFloat($0 / widthDenominator) }
-
         let colors = colorArray()
-
         var index: Int = 0
         var trailingEdgeAnchor = backgroundBar.leadingAnchor
 
@@ -247,6 +251,16 @@ class MultiSegmentProgressBar: ProgressBarBase {
             ])
 
             trailingEdgeAnchor = bar.trailingAnchor
+        }
+    }
+
+    private func updateGoalMarker() {
+        let sum = rawSegmentValues.reduce(0, +)
+
+        if let goal = goalValue, sum > goal {
+            markerFraction = CGFloat(goal / sum)
+        } else {
+            markerFraction = nil
         }
     }
 
@@ -278,7 +292,10 @@ struct SUIMultiSegmentProgressBar: UIViewRepresentable {
         return view
     }
 
-    func updateUIView(_ uiView: MultiSegmentProgressBar, context: Context) {}
+    func updateUIView(_ uiView: MultiSegmentProgressBar, context: Context) {
+        uiView.goalValue = goalValue
+        uiView.rawSegmentValues = rawSegmentValues
+    }
 }
 
 #if DEBUG

@@ -1,24 +1,27 @@
 import Foundation
+import HealthKit
 
 struct MockRunSummary : RunSummary {
     let date: Date
     let distance: Double
 }
 
-class MockRunRepository : RunRepositoryProtocol {
-    var runSummaries: [RunSummary]
+class MockRunRepository : RunRepository {
+    var mockSummaries: [RunSummary]
 
     init(workouts: [RunSummary]) {
-        self.runSummaries = workouts
+        self.mockSummaries = workouts
+        super.init(healthStore: HKHealthStore())
+        runSummaries = mockSummaries
+        didChange.send()
     }
 
     convenience init() {
         self.init(workouts: [])
     }
 
-    func loadRuns(completion: @escaping () -> Void) {
-        DispatchQueue.main.async {
-            completion()
-        }
+    override func refresh() {
+        runSummaries = mockSummaries
+        didChange.send()
     }
 }

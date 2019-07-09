@@ -6,12 +6,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     let weeklyGoalRepository = WeeklyGoalRepository()
     let runRepository = RunRepository(healthStore: HKHealthStore())
-    lazy var runPublisher: RunPublisher = { RunPublisher(runRepository: runRepository) }()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         if let windowScene = scene as? UIWindowScene {
             let contentView = ContentView()
-                .environmentObject(runPublisher)
+                .environmentObject(runRepository)
                 .environmentObject(weeklyGoalRepository)
 
             let window = UIWindow(windowScene: windowScene)
@@ -39,7 +38,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
-        runPublisher.refresh()
+        runRepository.refresh()
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
