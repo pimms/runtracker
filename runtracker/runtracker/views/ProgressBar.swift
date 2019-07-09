@@ -97,14 +97,8 @@ class ProgressBarBase: UIView {
 // MARK: - ProgressBar
 
 class ProgressBar: ProgressBarBase {
+    var progress: Double { didSet { initializeProgressBar() } }
     private let progressColor: UIColor
-    private let progress: Double
-
-    private lazy var progressBar: Bar = {
-        let bar = Bar(color: progressColor)
-        bar.translatesAutoresizingMaskIntoConstraints = false
-        return bar
-    }()
 
     required init?(coder aDecoder: NSCoder) {
         fatalError()
@@ -114,17 +108,22 @@ class ProgressBar: ProgressBarBase {
         self.progressColor = progressColor
         self.progress = progress
         super.init()
-        setup()
+        initializeProgressBar()
     }
 
-    private func setup() {
+    private func initializeProgressBar() {
         if progress > 1 {
             markerFraction = CGFloat(1.0 / progress)
+        } else {
+            markerFraction = nil
         }
 
-        let widthFraction = progress > 1 ? 1 : progress
-
+        let progressBar = Bar(color: progressColor)
+        progressBar.translatesAutoresizingMaskIntoConstraints = false
+        backgroundBar.subviews.forEach { $0.removeFromSuperview() }
         backgroundBar.addSubview(progressBar)
+
+        let widthFraction = progress > 1 ? 1 : progress
 
         NSLayoutConstraint.activate([
             progressBar.leadingAnchor.constraint(equalTo: backgroundBar.leadingAnchor),
@@ -151,7 +150,7 @@ struct SUIProgressBar: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: ProgressBar, context: Context) {
-        // TODO: Update the progress view
+        uiView.progress = progress
     }
 }
 
@@ -287,9 +286,7 @@ struct SUIMultiSegmentProgressBar: UIViewRepresentable {
     }
 
     func makeUIView(context: Context) -> MultiSegmentProgressBar {
-        let view = MultiSegmentProgressBar(rawSegmentValues: rawSegmentValues, goalValue: goalValue)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+        MultiSegmentProgressBar(rawSegmentValues: rawSegmentValues, goalValue: goalValue)
     }
 
     func updateUIView(_ uiView: MultiSegmentProgressBar, context: Context) {
