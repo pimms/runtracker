@@ -216,7 +216,6 @@ class MultiSegmentProgressBar: ProgressBarBase {
     }
 
     private func resetBars() {
-        print("Resetting: \(rawSegmentValues.count) bars")
         removeBars()
         setupBars()
     }
