@@ -6,8 +6,18 @@ import Combine
 open class RunRepository : RunRepositoryProtocol, BindableObject {
     public let didChange = PassthroughSubject<Void, Never>()
 
-    var runSummaries: [RunSummary] = []
-    
+    // MARK: - Internal properties
+
+    var runSummaries: [RunSummary] = [] {
+        didSet {
+            updateCurrentWeeksSummaries()
+        }
+    }
+
+    private(set) var currentWeeksRuns: [RunSummary] = []
+
+    // MARK: - Private properties
+
     private let healthStore: HKHealthStore
 
     init(healthStore: HKHealthStore) {
@@ -49,5 +59,12 @@ open class RunRepository : RunRepositoryProtocol, BindableObject {
         }
 
         healthStore.execute(query)
+    }
+
+    // MARK: - Updating
+
+    private func updateCurrentWeeksSummaries() {
+        let weekStart = Date.today().previous(.monday, considerToday: true)
+        currentWeeksRuns = runSummaries.filter { $0.date >= weekStart }
     }
 }

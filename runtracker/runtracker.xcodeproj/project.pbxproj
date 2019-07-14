@@ -16,6 +16,7 @@
 		190BBBFB22B2C1D300D993B8 /* runtrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190BBBFA22B2C1D300D993B8 /* runtrackerTests.swift */; };
 		190BBC0622B2C1D300D993B8 /* runtrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190BBC0522B2C1D300D993B8 /* runtrackerUITests.swift */; };
 		190BBC1722B2C31100D993B8 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190BBC1622B2C31100D993B8 /* HealthKit.framework */; };
+		192ADE7E22D50CA3001C60FA /* Date+lookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192ADE7D22D50CA3001C60FA /* Date+lookup.swift */; };
 		1953E7CA22B6BB7D00FF7F61 /* ProgressOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1953E7C922B6BB7D00FF7F61 /* ProgressOverview.swift */; };
 		196EAB7822D1F1BE00DE711B /* HKWorkout+distanceInMeters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196EAB7722D1F1BE00DE711B /* HKWorkout+distanceInMeters.swift */; };
 		196EAB7B22D1F2BA00DE711B /* Goals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196EAB7222D1F18000DE711B /* Goals.swift */; };
@@ -66,6 +67,7 @@
 		190BBC0722B2C1D300D993B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		190BBC1622B2C31100D993B8 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		190BBC1822B2C32A00D993B8 /* runtracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = runtracker.entitlements; sourceTree = "<group>"; };
+		192ADE7D22D50CA3001C60FA /* Date+lookup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+lookup.swift"; sourceTree = "<group>"; };
 		1953E7C922B6BB7D00FF7F61 /* ProgressOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressOverview.swift; sourceTree = "<group>"; };
 		196EAB6C22D1F18000DE711B /* RunRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRepository.swift; sourceTree = "<group>"; };
 		196EAB6E22D1F18000DE711B /* RunSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSummary.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				196EAB7722D1F1BE00DE711B /* HKWorkout+distanceInMeters.swift */,
 				19C09AA222B4CCF400097BED /* UIView+fillInSuperview.swift */,
 				19D3F1E422B4DFF8008CB1F6 /* Double+decimals.swift */,
+				192ADE7D22D50CA3001C60FA /* Date+lookup.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 				1953E7CA22B6BB7D00FF7F61 /* ProgressOverview.swift in Sources */,
 				198DB8AB22D1FD050002C2BC /* WeeklyGoalRepository.swift in Sources */,
 				19C09A9E22B412EF00097BED /* WeeklyDistanceProgressView.swift in Sources */,
+				192ADE7E22D50CA3001C60FA /* Date+lookup.swift in Sources */,
 				19C09AA022B4135300097BED /* Panel.swift in Sources */,
 				190BBBE422B2C1D200D993B8 /* AppDelegate.swift in Sources */,
 				196EAB7822D1F1BE00DE711B /* HKWorkout+distanceInMeters.swift in Sources */,

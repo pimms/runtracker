@@ -6,7 +6,7 @@ struct ProgressOverview : View {
 
     var body: some View {
         let distanceSummary = WeeklyDistanceSummaryModel(
-            runs: runRepository.runSummaries,
+            runs: runRepository.currentWeeksRuns,
             distanceGoal: goalRepo.weeklyDistanceGoal)
 
         return VStack {
