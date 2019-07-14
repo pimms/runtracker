@@ -3,7 +3,7 @@ import HealthKit
 import SwiftUI
 import Combine
 
-open class RunRepository : RunRepositoryProtocol, BindableObject {
+open class RunRepository : BindableObject {
     public let didChange = PassthroughSubject<Void, Never>()
 
     // MARK: - Internal properties

@@ -12,3 +12,12 @@ extension HKWorkout : RunSummary {
     public var date: Date { endDate }
     public var distance: Double { distanceInMeters }
 }
+
+#if DEBUG
+
+struct MockRunSummary: RunSummary {
+    let date: Date
+    let distance: Double
+}
+
+#endif

@@ -15,14 +15,11 @@ struct ContentView : View {
 }
 
 #if DEBUG
+import HealthKit
+
 struct ContentView_Previews : PreviewProvider {
     static var previews: some View {
-        let runRepo = MockRunRepository(
-            workouts: [
-                MockRunSummary(date: Date(), distance: 10_100),
-                MockRunSummary(date: Date(), distance: 3_500)
-            ]
-        )
+        let runRepo = RunRepository(healthStore: HKHealthStore())
 
         let goalRepo = WeeklyGoalRepository()
         goalRepo.weeklyDistanceGoal = WeeklyDistanceGoal(distanceInMeters: 30_000)
