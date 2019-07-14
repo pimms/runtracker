@@ -5,10 +5,18 @@ struct ContentView : View {
         NavigationView {
             TabbedView {
                 ProgressOverview()
+                    .tag(0)
                     .tabItem {
                         Image(systemName: "chart.bar.fill")
                         Text("Progress")
-                }
+                    }
+
+                GoalDefineView()
+                    .tag(1)
+                    .tabItem {
+                        Image(systemName: "star.fill")
+                        Text("Goals")
+                    }
             }.navigationBarTitle("Run Tracker")
         }
     }
