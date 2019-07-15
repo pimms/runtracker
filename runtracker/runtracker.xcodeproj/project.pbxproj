@@ -25,6 +25,7 @@
 		19764F7222B2C4E300E898D0 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19764F7122B2C4E300E898D0 /* ProgressBar.swift */; };
 		1984FC3822DB2014003C03D4 /* GoalDefineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1984FC3722DB2014003C03D4 /* GoalDefineView.swift */; };
 		198DB8AB22D1FD050002C2BC /* WeeklyGoalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198DB8AA22D1FD050002C2BC /* WeeklyGoalRepository.swift */; };
+		19A1FCE622DCC58A0023B044 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A1FCE522DCC58A0023B044 /* UserDefault.swift */; };
 		19C09A9E22B412EF00097BED /* WeeklyDistanceProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C09A9D22B412EF00097BED /* WeeklyDistanceProgressView.swift */; };
 		19C09AA022B4135300097BED /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C09A9F22B4135300097BED /* Panel.swift */; };
 		19C09AA322B4CCF400097BED /* UIView+fillInSuperview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C09AA222B4CCF400097BED /* UIView+fillInSuperview.swift */; };
@@ -75,6 +76,7 @@
 		19764F7122B2C4E300E898D0 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		1984FC3722DB2014003C03D4 /* GoalDefineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDefineView.swift; sourceTree = "<group>"; };
 		198DB8AA22D1FD050002C2BC /* WeeklyGoalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyGoalRepository.swift; sourceTree = "<group>"; };
+		19A1FCE522DCC58A0023B044 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		19C09A9D22B412EF00097BED /* WeeklyDistanceProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyDistanceProgressView.swift; sourceTree = "<group>"; };
 		19C09A9F22B4135300097BED /* Panel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
 		19C09AA222B4CCF400097BED /* UIView+fillInSuperview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+fillInSuperview.swift"; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				19D3F1E722B4E7DE008CB1F6 /* SeedableRNG.swift */,
+				19A1FCE522DCC58A0023B044 /* UserDefault.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				1984FC3822DB2014003C03D4 /* GoalDefineView.swift in Sources */,
 				190BBBE622B2C1D200D993B8 /* SceneDelegate.swift in Sources */,
 				196EAB7E22D1F2BD00DE711B /* RunSummary.swift in Sources */,
+				19A1FCE622DCC58A0023B044 /* UserDefault.swift in Sources */,
 				19764F7222B2C4E300E898D0 /* ProgressBar.swift in Sources */,
 				190BBBE822B2C1D200D993B8 /* ContentView.swift in Sources */,
 				19D3F1E822B4E7DE008CB1F6 /* SeedableRNG.swift in Sources */,
