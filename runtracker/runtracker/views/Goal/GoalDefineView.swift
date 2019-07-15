@@ -4,7 +4,13 @@ import Combine
 private class DistanceGoalProxy: BindableObject {
     var didChange = PassthroughSubject<Void, Never>()
 
-    var goalRepository: WeeklyGoalRepository?
+    var goalRepository: WeeklyGoalRepository? {
+        didSet {
+            if oldValue == nil, let val = goalRepository?.weeklyDistanceGoal?.distanceInMeters {
+                value = val / 1000
+            }
+        }
+    }
 
     var value: Double = 0 {
         didSet {
