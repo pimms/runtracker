@@ -5,7 +5,7 @@ import MapKit
 
 struct HeatmapView : UIViewRepresentable {
     // This seems to be the only way to retain the mapView when the
-    // user changes tabs in the TabBar.
+    // user changes tabs in the TabBar. lol.
     static let mapView = MKMapView(frame: .zero)
 
     func makeUIView(context: UIViewRepresentableContext<HeatmapView>) -> MKMapView {
