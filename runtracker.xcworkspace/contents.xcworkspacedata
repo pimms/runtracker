@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:CombinePlayground.playground">
+      location = "group:runtracker.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:runtracker/runtracker.xcodeproj">
+      location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>
