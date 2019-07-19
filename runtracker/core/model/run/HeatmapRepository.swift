@@ -40,6 +40,7 @@ class HeatmapRepository : BindableObject {
             }
     }
 
+    /// lol
     private func queryForRoute(inWorkout workout: HKWorkout) -> BlockingFuture<[BlockingFuture<[CLLocation]>]> {
         let future = BlockingFuture<[BlockingFuture<[CLLocation]>]> { [weak self] completion in
             guard let self = self else {
