@@ -18,6 +18,8 @@
 		190BBC1722B2C31100D993B8 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190BBC1622B2C31100D993B8 /* HealthKit.framework */; };
 		192326AC22DF6F0E0062C5A6 /* HeatmapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192326AB22DF6F0E0062C5A6 /* HeatmapView.swift */; };
 		192ADE7E22D50CA3001C60FA /* Date+lookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192ADE7D22D50CA3001C60FA /* Date+lookup.swift */; };
+		1947B13322E1F0C8006D772B /* HeatmapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947B13122E1EF9C006D772B /* HeatmapRepository.swift */; };
+		1947B13522E1FAC2006D772B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947B13422E1FAC2006D772B /* SceneDelegate.swift */; };
 		1953E7CA22B6BB7D00FF7F61 /* ProgressOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1953E7C922B6BB7D00FF7F61 /* ProgressOverview.swift */; };
 		196EAB7822D1F1BE00DE711B /* HKWorkout+distanceInMeters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196EAB7722D1F1BE00DE711B /* HKWorkout+distanceInMeters.swift */; };
 		196EAB7B22D1F2BA00DE711B /* Goals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196EAB7222D1F18000DE711B /* Goals.swift */; };
@@ -73,6 +75,8 @@
 		190BBC1822B2C32A00D993B8 /* runtracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = runtracker.entitlements; sourceTree = "<group>"; };
 		192326AB22DF6F0E0062C5A6 /* HeatmapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapView.swift; sourceTree = "<group>"; };
 		192ADE7D22D50CA3001C60FA /* Date+lookup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+lookup.swift"; sourceTree = "<group>"; };
+		1947B13122E1EF9C006D772B /* HeatmapRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HeatmapRepository.swift; path = ../../../../../../../../../System/Volumes/Data/Users/pimms/code/xcode/runtracker/runtracker/core/model/run/HeatmapRepository.swift; sourceTree = "<group>"; };
+		1947B13422E1FAC2006D772B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = ../../../../../../../System/Volumes/Data/Users/pimms/code/xcode/runtracker/runtracker/core/SceneDelegate.swift; sourceTree = "<group>"; };
 		1953E7C922B6BB7D00FF7F61 /* ProgressOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressOverview.swift; sourceTree = "<group>"; };
 		196EAB6C22D1F18000DE711B /* RunRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRepository.swift; sourceTree = "<group>"; };
 		196EAB6E22D1F18000DE711B /* RunSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSummary.swift; sourceTree = "<group>"; };
@@ -155,7 +159,6 @@
 				19C09AA122B4CCE200097BED /* extensions */,
 				190BBC1922B2C39000D993B8 /* views */,
 				190BBC1822B2C32A00D993B8 /* runtracker.entitlements */,
-				190BBBE322B2C1D200D993B8 /* AppDelegate.swift */,
 				190BBBE722B2C1D200D993B8 /* ContentView.swift */,
 				190BBBE922B2C1D300D993B8 /* Assets.xcassets */,
 				190BBBEE22B2C1D300D993B8 /* LaunchScreen.storyboard */,
@@ -224,6 +227,8 @@
 		196EAB6722D1F16B00DE711B /* core */ = {
 			isa = PBXGroup;
 			children = (
+				190BBBE322B2C1D200D993B8 /* AppDelegate.swift */,
+				1947B13422E1FAC2006D772B /* SceneDelegate.swift */,
 				196EAB6A22D1F18000DE711B /* model */,
 			);
 			path = core;
@@ -243,6 +248,7 @@
 			children = (
 				196EAB6C22D1F18000DE711B /* RunRepository.swift */,
 				196EAB6E22D1F18000DE711B /* RunSummary.swift */,
+				1947B13122E1EF9C006D772B /* HeatmapRepository.swift */,
 			);
 			path = run;
 			sourceTree = "<group>";
@@ -549,7 +555,9 @@
 				19C09AA322B4CCF400097BED /* UIView+fillInSuperview.swift in Sources */,
 				196EAB7C22D1F2BD00DE711B /* RunRepository.swift in Sources */,
 				1984FC3822DB2014003C03D4 /* GoalDefineView.swift in Sources */,
+				1947B13322E1F0C8006D772B /* HeatmapRepository.swift in Sources */,
 				196EAB7E22D1F2BD00DE711B /* RunSummary.swift in Sources */,
+				1947B13522E1FAC2006D772B /* SceneDelegate.swift in Sources */,
 				19A1FCE622DCC58A0023B044 /* UserDefault.swift in Sources */,
 				19764F7222B2C4E300E898D0 /* ProgressBar.swift in Sources */,
 				190BBBE822B2C1D200D993B8 /* ContentView.swift in Sources */,

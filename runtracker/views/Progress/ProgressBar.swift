@@ -10,10 +10,6 @@ class Bar: UIView {
         super.init(frame: .zero)
         backgroundColor = color
         layer.cornerRadius = Bar.barHeight / 2.0
-
-        NSLayoutConstraint.activate([
-            heightAnchor.constraint(equalToConstant: Bar.barHeight)
-        ])
     }
 
     required init?(coder aDecoder: NSCoder) {

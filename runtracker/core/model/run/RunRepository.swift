@@ -4,7 +4,7 @@ import SwiftUI
 import Combine
 
 open class RunRepository : BindableObject {
-    public let willChange = PassthroughSubject<Void, Never>()
+    public let willChange = PassthroughSubject<[RunSummary], Never>()
 
     // MARK: - Internal properties
 
@@ -35,21 +35,24 @@ open class RunRepository : BindableObject {
     }
 
     func refresh() {
-        loadRuns { [weak self] runs in
-            self?.runSummaries = runs
-
-            DispatchQueue.main.async { [weak self] in
-                self?.willChange.send()
+        queryForWorkouts { [weak self] runs in
+            guard let self = self else { return }
+            for workout in runs {
+                self.queryForRoute(inWorkout: workout)
             }
-        }
-    }
 
-    private func loadRuns(completion: @escaping ([RunSummary]) -> Void) {
-        queryForWorkouts { [weak self] workouts in
-            for workout in workouts {
-                self?.queryForRoute(inWorkout: workout)
+            let diff = self.runSummaries
+                .compactMap { $0 as? HKWorkout }
+                .difference(from: runs) { $0 == $1 }
+
+            if diff.count != 0 {
+                self.runSummaries = runs
+
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
+                    self.willChange.send(self.runSummaries)
+                }
             }
-            completion(workouts)
         }
     }
 
@@ -62,7 +65,6 @@ open class RunRepository : BindableObject {
                                   sortDescriptors: [sorting]) { query, samples, err in
             let samples = samples ?? []
             let filtered = samples.compactMap { $0 as? HKWorkout }
-            print("[WorkoutRepository] Loaded \(filtered.count) workouts")
             completion(filtered)
         }
 
