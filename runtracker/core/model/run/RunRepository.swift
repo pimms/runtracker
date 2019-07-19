@@ -4,7 +4,8 @@ import SwiftUI
 import Combine
 
 open class RunRepository : BindableObject {
-    public let willChange = PassthroughSubject<[RunSummary], Never>()
+    public let willChange = PassthroughSubject<Void, Never>()
+    public let workouts = PassthroughSubject<[HKWorkout], Never>()
 
     // MARK: - Internal properties
 
@@ -37,9 +38,6 @@ open class RunRepository : BindableObject {
     func refresh() {
         queryForWorkouts { [weak self] runs in
             guard let self = self else { return }
-            for workout in runs {
-                self.queryForRoute(inWorkout: workout)
-            }
 
             let diff = self.runSummaries
                 .compactMap { $0 as? HKWorkout }
@@ -50,7 +48,8 @@ open class RunRepository : BindableObject {
 
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else { return }
-                    self.willChange.send(self.runSummaries)
+                    self.willChange.send()
+                    self.workouts.send(runs)
                 }
             }
         }
@@ -69,18 +68,6 @@ open class RunRepository : BindableObject {
         }
 
         healthStore.execute(query)
-    }
-
-    private func queryForRoute(inWorkout workout: HKWorkout) {
-        let runningObjectQuery = HKQuery.predicateForObjects(from: workout)
-        let routeQuery = HKSampleQuery(sampleType: HKSeriesType.workoutRoute(),
-                                       predicate: runningObjectQuery,
-                                       limit: HKObjectQueryNoLimit,
-                                       sortDescriptors: nil) { (query, samples, error) in
-            // print("Got \(samples?.count ?? 0) samples")
-        }
-
-        healthStore.execute(routeQuery)
     }
 
     // MARK: - Updating

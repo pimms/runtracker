@@ -34,6 +34,9 @@
 		19C09AA322B4CCF400097BED /* UIView+fillInSuperview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C09AA222B4CCF400097BED /* UIView+fillInSuperview.swift */; };
 		19D3F1E522B4DFF8008CB1F6 /* Double+decimals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D3F1E422B4DFF8008CB1F6 /* Double+decimals.swift */; };
 		19D3F1E822B4E7DE008CB1F6 /* SeedableRNG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D3F1E722B4E7DE008CB1F6 /* SeedableRNG.swift */; };
+		19ECD86522E220D400B8EB0B /* BlockingFuture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19ECD86422E220D400B8EB0B /* BlockingFuture.swift */; };
+		19ECD86822E2219400B8EB0B /* CwlMutex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19ECD86722E2219400B8EB0B /* CwlMutex.swift */; };
+		19ECD86B22E2239800B8EB0B /* BlockingFutureTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19ECD86A22E2239800B8EB0B /* BlockingFutureTest.swift */; };
 		5F8180E559FF094A7254738B /* Pods_runtrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CF1A26259C776DDFC60699F /* Pods_runtrackerUITests.framework */; };
 		C3CB162801B7EBC829EC1A13 /* Pods_runtracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 216ED47D5DCF7EDB65A8D5E6 /* Pods_runtracker.framework */; };
 /* End PBXBuildFile section */
@@ -91,6 +94,9 @@
 		19C09AA222B4CCF400097BED /* UIView+fillInSuperview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+fillInSuperview.swift"; sourceTree = "<group>"; };
 		19D3F1E422B4DFF8008CB1F6 /* Double+decimals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+decimals.swift"; sourceTree = "<group>"; };
 		19D3F1E722B4E7DE008CB1F6 /* SeedableRNG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedableRNG.swift; sourceTree = "<group>"; };
+		19ECD86422E220D400B8EB0B /* BlockingFuture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BlockingFuture.swift; path = ../../../../../../../System/Volumes/Data/Users/pimms/code/xcode/runtracker/runtracker/util/BlockingFuture.swift; sourceTree = "<group>"; };
+		19ECD86722E2219400B8EB0B /* CwlMutex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CwlMutex.swift; path = ../../../../../../../../System/Volumes/Data/Users/pimms/code/xcode/runtracker/runtracker/util/ThirdParty/CwlMutex.swift; sourceTree = "<group>"; };
+		19ECD86A22E2239800B8EB0B /* BlockingFutureTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BlockingFutureTest.swift; path = ../../../../../../../System/Volumes/Data/Users/pimms/code/xcode/runtracker/runtrackerTests/util/BlockingFutureTest.swift; sourceTree = "<group>"; };
 		20F1AB1CE837DACA22305BC6 /* Pods_runtrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_runtrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		216ED47D5DCF7EDB65A8D5E6 /* Pods_runtracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_runtracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B31240B25D48AAC09439DE7 /* Pods-runtracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-runtracker.release.xcconfig"; path = "Target Support Files/Pods-runtracker/Pods-runtracker.release.xcconfig"; sourceTree = "<group>"; };
@@ -179,6 +185,7 @@
 		190BBBF922B2C1D300D993B8 /* runtrackerTests */ = {
 			isa = PBXGroup;
 			children = (
+				19ECD86922E2238500B8EB0B /* util */,
 				190BBBFA22B2C1D300D993B8 /* runtrackerTests.swift */,
 				190BBBFC22B2C1D300D993B8 /* Info.plist */,
 			);
@@ -302,8 +309,26 @@
 		19D3F1E622B4E7D3008CB1F6 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				19ECD86622E2218600B8EB0B /* ThirdParty */,
 				19D3F1E722B4E7DE008CB1F6 /* SeedableRNG.swift */,
 				19A1FCE522DCC58A0023B044 /* UserDefault.swift */,
+				19ECD86422E220D400B8EB0B /* BlockingFuture.swift */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+		19ECD86622E2218600B8EB0B /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				19ECD86722E2219400B8EB0B /* CwlMutex.swift */,
+			);
+			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		19ECD86922E2238500B8EB0B /* util */ = {
+			isa = PBXGroup;
+			children = (
+				19ECD86A22E2239800B8EB0B /* BlockingFutureTest.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -545,6 +570,7 @@
 				196EAB7B22D1F2BA00DE711B /* Goals.swift in Sources */,
 				19D3F1E522B4DFF8008CB1F6 /* Double+decimals.swift in Sources */,
 				1953E7CA22B6BB7D00FF7F61 /* ProgressOverview.swift in Sources */,
+				19ECD86522E220D400B8EB0B /* BlockingFuture.swift in Sources */,
 				198DB8AB22D1FD050002C2BC /* WeeklyGoalRepository.swift in Sources */,
 				19C09A9E22B412EF00097BED /* WeeklyDistanceProgressView.swift in Sources */,
 				192ADE7E22D50CA3001C60FA /* Date+lookup.swift in Sources */,
@@ -553,6 +579,7 @@
 				196EAB7822D1F1BE00DE711B /* HKWorkout+distanceInMeters.swift in Sources */,
 				192326AC22DF6F0E0062C5A6 /* HeatmapView.swift in Sources */,
 				19C09AA322B4CCF400097BED /* UIView+fillInSuperview.swift in Sources */,
+				19ECD86822E2219400B8EB0B /* CwlMutex.swift in Sources */,
 				196EAB7C22D1F2BD00DE711B /* RunRepository.swift in Sources */,
 				1984FC3822DB2014003C03D4 /* GoalDefineView.swift in Sources */,
 				1947B13322E1F0C8006D772B /* HeatmapRepository.swift in Sources */,
@@ -570,6 +597,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				190BBBFB22B2C1D300D993B8 /* runtrackerTests.swift in Sources */,
+				19ECD86B22E2239800B8EB0B /* BlockingFutureTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

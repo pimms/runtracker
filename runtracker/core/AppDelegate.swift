@@ -4,10 +4,15 @@ import HealthKit
 
 @UIApplicationMain
 class AppDelegate : UIResponder {
-    let weeklyGoalRepository = WeeklyGoalRepository()
-    let runRepository = RunRepository(healthStore: HKHealthStore())
+    let healthStore = HKHealthStore()
+    let weeklyGoalRepository: WeeklyGoalRepository
+    let runRepository: RunRepository
+    let heatmapRepository: HeatmapRepository
 
     override init() {
+        weeklyGoalRepository = WeeklyGoalRepository()
+        runRepository = RunRepository(healthStore: healthStore)
+        heatmapRepository = HeatmapRepository(healthStore: healthStore, subject: runRepository.workouts)
         super.init()
     }
 }
