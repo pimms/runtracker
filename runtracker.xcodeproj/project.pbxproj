@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		03495F88961DF75669BA11E0 /* Pods_runtrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20F1AB1CE837DACA22305BC6 /* Pods_runtrackerTests.framework */; };
 		190BBBE422B2C1D200D993B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190BBBE322B2C1D200D993B8 /* AppDelegate.swift */; };
-		190BBBE622B2C1D200D993B8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190BBBE522B2C1D200D993B8 /* SceneDelegate.swift */; };
 		190BBBE822B2C1D200D993B8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190BBBE722B2C1D200D993B8 /* ContentView.swift */; };
 		190BBBEA22B2C1D300D993B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 190BBBE922B2C1D300D993B8 /* Assets.xcassets */; };
 		190BBBED22B2C1D300D993B8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 190BBBEC22B2C1D300D993B8 /* Preview Assets.xcassets */; };
@@ -59,7 +58,6 @@
 		0CF1A26259C776DDFC60699F /* Pods_runtrackerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_runtrackerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		190BBBE022B2C1D200D993B8 /* runtracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = runtracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		190BBBE322B2C1D200D993B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		190BBBE522B2C1D200D993B8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		190BBBE722B2C1D200D993B8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		190BBBE922B2C1D300D993B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		190BBBEC22B2C1D300D993B8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -158,7 +156,6 @@
 				190BBC1922B2C39000D993B8 /* views */,
 				190BBC1822B2C32A00D993B8 /* runtracker.entitlements */,
 				190BBBE322B2C1D200D993B8 /* AppDelegate.swift */,
-				190BBBE522B2C1D200D993B8 /* SceneDelegate.swift */,
 				190BBBE722B2C1D200D993B8 /* ContentView.swift */,
 				190BBBE922B2C1D300D993B8 /* Assets.xcassets */,
 				190BBBEE22B2C1D300D993B8 /* LaunchScreen.storyboard */,
@@ -552,7 +549,6 @@
 				19C09AA322B4CCF400097BED /* UIView+fillInSuperview.swift in Sources */,
 				196EAB7C22D1F2BD00DE711B /* RunRepository.swift in Sources */,
 				1984FC3822DB2014003C03D4 /* GoalDefineView.swift in Sources */,
-				190BBBE622B2C1D200D993B8 /* SceneDelegate.swift in Sources */,
 				196EAB7E22D1F2BD00DE711B /* RunSummary.swift in Sources */,
 				19A1FCE622DCC58A0023B044 /* UserDefault.swift in Sources */,
 				19764F7222B2C4E300E898D0 /* ProgressBar.swift in Sources */,

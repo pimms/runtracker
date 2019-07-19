@@ -2,7 +2,7 @@ import SwiftUI
 import Combine
 
 private class DistanceGoalProxy: BindableObject {
-    var didChange = PassthroughSubject<Void, Never>()
+    var willChange = PassthroughSubject<Void, Never>()
 
     var goalRepository: WeeklyGoalRepository? {
         didSet {
@@ -18,7 +18,7 @@ private class DistanceGoalProxy: BindableObject {
             let newGoal = Int(value) * 1000
             if let goalRepository = goalRepository, currentGoal != newGoal {
                 goalRepository.weeklyDistanceGoal = WeeklyDistanceGoal(distanceInMeters: Double(newGoal))
-                didChange.send()
+                willChange.send()
             }
         }
     }

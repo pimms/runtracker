@@ -4,7 +4,7 @@ import SwiftUI
 import Combine
 
 open class RunRepository : BindableObject {
-    public let didChange = PassthroughSubject<Void, Never>()
+    public let willChange = PassthroughSubject<Void, Never>()
 
     // MARK: - Internal properties
 
@@ -26,26 +26,34 @@ open class RunRepository : BindableObject {
 
     // MARK: - Querying
 
+    func requestAuthorization(completion: @escaping (Bool) -> Void) {
+        let toRead = Set(arrayLiteral: HKWorkoutType.workoutType(), HKSeriesType.workoutRoute())
+
+        healthStore.requestAuthorization(toShare: nil, read: toRead) { success, _ in
+            completion(success)
+        }
+    }
+
     func refresh() {
         loadRuns { [weak self] runs in
+            self?.runSummaries = runs
+
             DispatchQueue.main.async { [weak self] in
-                self?.runSummaries = runs
-                self?.didChange.send()
+                self?.willChange.send()
             }
         }
     }
 
     private func loadRuns(completion: @escaping ([RunSummary]) -> Void) {
-        let toRead = Set(arrayLiteral: HKWorkoutType.workoutType())
-
-        healthStore.requestAuthorization(toShare: nil, read: toRead, completion: { [weak self] _, _ in
-            self?.queryHealthKit { workouts in
-                completion(workouts)
+        queryForWorkouts { [weak self] workouts in
+            for workout in workouts {
+                self?.queryForRoute(inWorkout: workout)
             }
-        })
+            completion(workouts)
+        }
     }
 
-    private func queryHealthKit(completion: @escaping ([HKWorkout]) -> Void) {
+    private func queryForWorkouts(completion: @escaping ([HKWorkout]) -> Void) {
         let predicate = HKQuery.predicateForWorkouts(with: .running)
         let sorting = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: true)
         let query = HKSampleQuery(sampleType: HKSampleType.workoutType(),
@@ -59,6 +67,18 @@ open class RunRepository : BindableObject {
         }
 
         healthStore.execute(query)
+    }
+
+    private func queryForRoute(inWorkout workout: HKWorkout) {
+        let runningObjectQuery = HKQuery.predicateForObjects(from: workout)
+        let routeQuery = HKSampleQuery(sampleType: HKSeriesType.workoutRoute(),
+                                       predicate: runningObjectQuery,
+                                       limit: HKObjectQueryNoLimit,
+                                       sortDescriptors: nil) { (query, samples, error) in
+            // print("Got \(samples?.count ?? 0) samples")
+        }
+
+        healthStore.execute(routeQuery)
     }
 
     // MARK: - Updating

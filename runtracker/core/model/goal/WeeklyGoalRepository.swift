@@ -3,19 +3,19 @@ import SwiftUI
 import Combine
 
 class WeeklyGoalRepository: BindableObject {
-    var didChange = PassthroughSubject<Void, Never>()
+    var willChange = PassthroughSubject<Void, Never>()
 
     var weeklyDistanceGoal: WeeklyDistanceGoal? {
         didSet {
             userDefaultsDistance = weeklyDistanceGoal?.distanceInMeters ?? -1
-            didChange.send()
+            willChange.send()
         }
     }
 
     var weeklyTimeGoal: WeeklyTimeGoal? {
         didSet {
             userDefaultsTime = weeklyTimeGoal?.durationInMinutes ?? -1
-            didChange.send()
+            willChange.send()
         }
     }
 

@@ -1,24 +1,21 @@
 import SwiftUI
 
-struct WeeklyDistanceSummaryModel {
-    let runs: [RunSummary]
-    let distanceGoal: WeeklyDistanceGoal?
-}
-
 struct WeeklyDistanceProgressView : View {
-    private let summary: WeeklyDistanceSummaryModel
+    @EnvironmentObject var goalRepository: WeeklyGoalRepository
+    @EnvironmentObject var runRepository: RunRepository
 
-    private var runDistances: [Double] { summary.runs.map { $0.distance } }
-    private var totalDistance: Double { runDistances.reduce(0, +) }
+    private var runDistances: [Double] {
+        runRepository.currentWeeksRuns.map { $0.distance }
+    }
 
-    init(summary: WeeklyDistanceSummaryModel) {
-        self.summary = summary
+    private var totalDistance: Double {
+        runDistances.reduce(0, +)
     }
 
     private func progressText() -> String {
         let currentKm = totalDistance / 1000.0
 
-        if let goalMeters = summary.distanceGoal?.distanceInMeters {
+        if let goalMeters = goalRepository.weeklyDistanceGoal?.distanceInMeters {
             let goalKm = goalMeters / 1000.0
             return "\(currentKm.string(withDecimals: 1)) km / \(goalKm.string(withDecimals: 1)) km"
         } else {
@@ -31,7 +28,7 @@ struct WeeklyDistanceProgressView : View {
             VStack {
                 SUIMultiSegmentProgressBar(
                     rawSegmentValues: runDistances,
-                    goalValue: summary.distanceGoal?.distanceInMeters
+                    goalValue: goalRepository.weeklyDistanceGoal?.distanceInMeters
                 ).frame(height: Bar.barHeight)
 
                 HStack {
@@ -45,6 +42,8 @@ struct WeeklyDistanceProgressView : View {
 }
 
 #if DEBUG
+import HealthKit
+
 struct WeeklyDistanceProgressView_Previews : PreviewProvider {
     static private func run(_ distance: Double) -> MockRunSummary {
         return MockRunSummary(date: Date(), distance: distance * 1000)
@@ -55,26 +54,20 @@ struct WeeklyDistanceProgressView_Previews : PreviewProvider {
     }
 
     static var previews: some View {
-        let summary1 = WeeklyDistanceSummaryModel(
-            runs: [run(1), run(4)],
-            distanceGoal: dgoal(2))
-        let summary2 = WeeklyDistanceSummaryModel(
-            runs: [run(1), run(1), run(1)],
-            distanceGoal: dgoal(5))
-        let summary3 = WeeklyDistanceSummaryModel(
-            runs: [run(1), run(1), run(1), run(1), run(1), run(1)],
-            distanceGoal: nil)
+        let goalRepo = WeeklyGoalRepository()
+        goalRepo.weeklyDistanceGoal = WeeklyDistanceGoal(distanceInMeters: 30_000)
+
+        let runRepo = RunRepository(healthStore: HKHealthStore())
 
         let list = List {
-            WeeklyDistanceProgressView(summary: summary1)
-            WeeklyDistanceProgressView(summary: summary2)
-            WeeklyDistanceProgressView(summary: summary3)
+            WeeklyDistanceProgressView()
         }
 
         return VStack {
             list.colorScheme(.dark)
             list.colorScheme(.light)
-        }
+        }.environmentObject(runRepo)
+         .environmentObject(goalRepo)
     }
 }
 #endif

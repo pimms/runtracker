@@ -5,12 +5,8 @@ struct ProgressOverview : View {
     @EnvironmentObject var goalRepo: WeeklyGoalRepository
 
     var body: some View {
-        let distanceSummary = WeeklyDistanceSummaryModel(
-            runs: runRepository.currentWeeksRuns,
-            distanceGoal: goalRepo.weeklyDistanceGoal)
-
         return VStack {
-            WeeklyDistanceProgressView(summary: distanceSummary)
+            WeeklyDistanceProgressView()
             Spacer()
         }.padding()
     }
