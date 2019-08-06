@@ -27,7 +27,7 @@ open class RunRepository : BindableObject {
 
         for _ in 0 ..< weeksAgo {
             weekStart = weekStart.previous(.monday, considerToday: false)
-            weekEnd = weekEnd.next(.sunday, considerToday: false)
+            weekEnd = weekEnd.previous(.sunday, considerToday: false)
         }
 
         return runSummaries.filter { $0.date >= weekStart && $0.date <= weekEnd }

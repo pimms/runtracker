@@ -4,8 +4,10 @@ struct WeeklyDistanceProgressView : View {
     @EnvironmentObject var goalRepository: WeeklyGoalRepository
     @EnvironmentObject var runRepository: RunRepository
 
+    let weeksAgo: Int
+
     private var runDistances: [Double] {
-        runRepository.summaries(weeksAgo: 0).map { $0.distance }
+        runRepository.summaries(weeksAgo: weeksAgo).map { $0.distance }
     }
 
     private var totalDistance: Double {
@@ -60,7 +62,7 @@ struct WeeklyDistanceProgressView_Previews : PreviewProvider {
         let runRepo = RunRepository(healthStore: HKHealthStore())
 
         let list = List {
-            WeeklyDistanceProgressView()
+            WeeklyDistanceProgressView(weeksAgo: 0)
         }
 
         return VStack {

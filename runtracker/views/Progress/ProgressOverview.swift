@@ -6,7 +6,7 @@ struct ProgressOverview : View {
 
     var body: some View {
         return VStack {
-            WeeklyDistanceProgressView()
+            WeeklyDistanceProgressView(weeksAgo: 0)
             Spacer()
         }.padding()
     }

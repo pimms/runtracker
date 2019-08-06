@@ -21,6 +21,7 @@
 		1947B13322E1F0C8006D772B /* HeatmapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947B13122E1EF9C006D772B /* HeatmapRepository.swift */; };
 		1947B13522E1FAC2006D772B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947B13422E1FAC2006D772B /* SceneDelegate.swift */; };
 		1953E7CA22B6BB7D00FF7F61 /* ProgressOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1953E7C922B6BB7D00FF7F61 /* ProgressOverview.swift */; };
+		1969F15B22FA185200E9EBB0 /* WeeklyHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1969F15922FA15F400E9EBB0 /* WeeklyHistoryView.swift */; };
 		196EAB7822D1F1BE00DE711B /* HKWorkout+distanceInMeters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196EAB7722D1F1BE00DE711B /* HKWorkout+distanceInMeters.swift */; };
 		196EAB7B22D1F2BA00DE711B /* Goals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196EAB7222D1F18000DE711B /* Goals.swift */; };
 		196EAB7C22D1F2BD00DE711B /* RunRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196EAB6C22D1F18000DE711B /* RunRepository.swift */; };
@@ -82,6 +83,7 @@
 		1947B13122E1EF9C006D772B /* HeatmapRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HeatmapRepository.swift; path = ../../../../../../../../../System/Volumes/Data/Users/pimms/code/xcode/runtracker/runtracker/core/model/run/HeatmapRepository.swift; sourceTree = "<group>"; };
 		1947B13422E1FAC2006D772B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = ../../../../../../../System/Volumes/Data/Users/pimms/code/xcode/runtracker/runtracker/core/SceneDelegate.swift; sourceTree = "<group>"; };
 		1953E7C922B6BB7D00FF7F61 /* ProgressOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressOverview.swift; sourceTree = "<group>"; };
+		1969F15922FA15F400E9EBB0 /* WeeklyHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyHistoryView.swift; sourceTree = "<group>"; };
 		196EAB6C22D1F18000DE711B /* RunRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRepository.swift; sourceTree = "<group>"; };
 		196EAB6E22D1F18000DE711B /* RunSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSummary.swift; sourceTree = "<group>"; };
 		196EAB7222D1F18000DE711B /* Goals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goals.swift; sourceTree = "<group>"; };
@@ -235,6 +237,14 @@
 			path = Heatmap;
 			sourceTree = "<group>";
 		};
+		1969F15822FA15D500E9EBB0 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				1969F15922FA15F400E9EBB0 /* WeeklyHistoryView.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
 		196EAB6722D1F16B00DE711B /* core */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,6 +286,7 @@
 		1984FC3322DB188D003C03D4 /* Progress */ = {
 			isa = PBXGroup;
 			children = (
+				1969F15822FA15D500E9EBB0 /* History */,
 				19764F7122B2C4E300E898D0 /* ProgressBar.swift */,
 				19C09A9D22B412EF00097BED /* WeeklyDistanceProgressView.swift */,
 				1953E7C922B6BB7D00FF7F61 /* ProgressOverview.swift */,
@@ -599,6 +610,7 @@
 				196EAB7C22D1F2BD00DE711B /* RunRepository.swift in Sources */,
 				1984FC3822DB2014003C03D4 /* GoalDefineView.swift in Sources */,
 				1947B13322E1F0C8006D772B /* HeatmapRepository.swift in Sources */,
+				1969F15B22FA185200E9EBB0 /* WeeklyHistoryView.swift in Sources */,
 				196EAB7E22D1F2BD00DE711B /* RunSummary.swift in Sources */,
 				1947B13522E1FAC2006D772B /* SceneDelegate.swift in Sources */,
 				19A1FCE622DCC58A0023B044 /* UserDefault.swift in Sources */,

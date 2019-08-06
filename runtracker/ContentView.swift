@@ -11,15 +11,22 @@ struct ContentView : View {
                         Text("Progress")
                     }
 
-                SUIHeatmapView()
+                WeeklyHistoryView()
                     .tag(1)
+                    .tabItem {
+                        Image(systemName: "calendar.fill")
+                        Text("History")
+                    }
+
+                SUIHeatmapView()
+                    .tag(2)
                     .tabItem {
                         Image(systemName: "map.fill")
                         Text("Heatmap")
                     }
 
                 GoalDefineView()
-                    .tag(2)
+                    .tag(3)
                     .tabItem {
                         Image(systemName: "star.fill")
                         Text("Goals")
