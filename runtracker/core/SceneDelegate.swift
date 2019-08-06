@@ -7,6 +7,7 @@ class SceneDelegate : UIResponder, UIWindowSceneDelegate {
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     private var runRepository: RunRepository { appDelegate.runRepository }
     private var weeklyGoalRepository: WeeklyGoalRepository { appDelegate.weeklyGoalRepository }
+    private var heatmapRepository: HeatmapRepository { appDelegate.heatmapRepository }
 
     private var initialLaunch = true
 
@@ -15,6 +16,7 @@ class SceneDelegate : UIResponder, UIWindowSceneDelegate {
             let contentView = ContentView()
                 .environmentObject(runRepository)
                 .environmentObject(weeklyGoalRepository)
+                .environmentObject(heatmapRepository)
 
             let window = UIWindow(windowScene: windowScene)
             window.rootViewController = UIHostingController(rootView: contentView)

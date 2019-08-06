@@ -11,7 +11,7 @@ struct ContentView : View {
                         Text("Progress")
                     }
 
-                HeatmapView()
+                SUIHeatmapView()
                     .tag(1)
                     .tabItem {
                         Image(systemName: "map.fill")

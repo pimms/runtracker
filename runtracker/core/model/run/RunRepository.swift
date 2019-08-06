@@ -9,13 +9,7 @@ open class RunRepository : BindableObject {
 
     // MARK: - Internal properties
 
-    var runSummaries: [RunSummary] = [] {
-        didSet {
-            updateCurrentWeeksSummaries()
-        }
-    }
-
-    private(set) var currentWeeksRuns: [RunSummary] = []
+    var runSummaries: [RunSummary] = []
 
     // MARK: - Private properties
 
@@ -25,7 +19,19 @@ open class RunRepository : BindableObject {
         self.healthStore = healthStore
     }
 
-    // MARK: - Querying
+    // MARK: - Internal methods
+
+    func summaries(weeksAgo: Int) -> [RunSummary] {
+        var weekStart = Date.today().previous(.monday, considerToday: true)
+        var weekEnd = Date.today().next(.sunday, considerToday: true)
+
+        for _ in 0 ..< weeksAgo {
+            weekStart = weekStart.previous(.monday, considerToday: false)
+            weekEnd = weekEnd.next(.sunday, considerToday: false)
+        }
+
+        return runSummaries.filter { $0.date >= weekStart && $0.date <= weekEnd }
+    }
 
     func requestAuthorization(completion: @escaping (Bool) -> Void) {
         let toRead = Set(arrayLiteral: HKWorkoutType.workoutType(), HKSeriesType.workoutRoute())
@@ -68,12 +74,5 @@ open class RunRepository : BindableObject {
         }
 
         healthStore.execute(query)
-    }
-
-    // MARK: - Updating
-
-    private func updateCurrentWeeksSummaries() {
-        let weekStart = Date.today().previous(.monday, considerToday: true)
-        currentWeeksRuns = runSummaries.filter { $0.date >= weekStart }
     }
 }

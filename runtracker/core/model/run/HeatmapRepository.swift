@@ -8,7 +8,7 @@ class HeatmapRepository : BindableObject {
     var willChange = PassthroughSubject<Void, Never>()
 
     private let healthStore: HKHealthStore
-    private var locations = [CLLocation]()
+    private(set) var locations = [CLLocation]()
 
     init(healthStore: HKHealthStore, subject: PassthroughSubject<[HKWorkout], Never>) {
         self.healthStore = healthStore
@@ -35,6 +35,7 @@ class HeatmapRepository : BindableObject {
                 self.locations = locations
 
                 DispatchQueue.main.async {
+                    print("[HeatmapRepository] Fetched \(self.locations.count) locations")
                     self.willChange.send()
                 }
             }

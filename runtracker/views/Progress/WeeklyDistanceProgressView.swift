@@ -5,7 +5,7 @@ struct WeeklyDistanceProgressView : View {
     @EnvironmentObject var runRepository: RunRepository
 
     private var runDistances: [Double] {
-        runRepository.currentWeeksRuns.map { $0.distance }
+        runRepository.summaries(weeksAgo: 0).map { $0.distance }
     }
 
     private var totalDistance: Double {
