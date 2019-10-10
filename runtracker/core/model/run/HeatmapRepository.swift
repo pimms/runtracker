@@ -4,7 +4,7 @@ import SwiftUI
 import Combine
 import CoreLocation
 
-class HeatmapRepository : BindableObject {
+class HeatmapRepository : ObservableObject {
     var willChange = PassthroughSubject<Void, Never>()
 
     private let healthStore: HKHealthStore

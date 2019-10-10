@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-class WeeklyGoalRepository: BindableObject {
+class WeeklyGoalRepository: ObservableObject {
     var willChange = PassthroughSubject<Void, Never>()
 
     var weeklyDistanceGoal: WeeklyDistanceGoal? {

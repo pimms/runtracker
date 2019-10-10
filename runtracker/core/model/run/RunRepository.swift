@@ -3,7 +3,7 @@ import HealthKit
 import SwiftUI
 import Combine
 
-open class RunRepository : BindableObject {
+open class RunRepository : ObservableObject {
     public let willChange = PassthroughSubject<Void, Never>()
     public let workouts = PassthroughSubject<[HKWorkout], Never>()
 

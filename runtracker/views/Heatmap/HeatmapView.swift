@@ -42,7 +42,7 @@ private struct HeatmapWrapperView : UIViewRepresentable {
     // user changes tabs in the TabBar. lol.
     static let mapView = HeatmapView()
 
-    @ObjectBinding var heatmapRepo: HeatmapRepository
+    @ObservedObject var heatmapRepo: HeatmapRepository
 
     // updateUIView won't get called unless we add an arbitrary class prop.
     // This class and instantiation does intentionally nothing.

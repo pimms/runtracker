@@ -1,7 +1,7 @@
 import SwiftUI
 import Combine
 
-private class DistanceGoalProxy: BindableObject {
+private class DistanceGoalProxy: ObservableObject {
     var willChange = PassthroughSubject<Void, Never>()
 
     var goalRepository: WeeklyGoalRepository? {
@@ -28,7 +28,7 @@ struct GoalDefineView : View {
     private static let defaultGoal = 10.0
 
     @EnvironmentObject var goalRepository: WeeklyGoalRepository
-    @ObjectBinding private var distanceProxy = DistanceGoalProxy()
+    @ObservedObject private var distanceProxy = DistanceGoalProxy()
 
     var body: some View {
         distanceProxy.goalRepository = goalRepository
@@ -41,10 +41,10 @@ struct GoalDefineView : View {
                             self.distanceProxy.value = GoalDefineView.defaultGoal
                         })
                     } else {
-                        Slider(value: $distanceProxy.value, from: 0, through: 100, by: 1)
+                        Slider(value: $distanceProxy.value, in: 0...100)
 
                         HStack {
-                            Text("Value: \(Int($distanceProxy.value.value))")
+                            Text("Value: \(Int($distanceProxy.value.wrappedValue))")
                             Spacer()
                         }
                     }

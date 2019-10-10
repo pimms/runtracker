@@ -12,16 +12,14 @@ struct Panel<Content> : View where Content : View {
     var body: some View {
         VStack(spacing: 0) {
             HStack(alignment: .top) {
-                Text(title)
-                    .font(.headline)
-                    .padding()
+                Text(title).padding().font(.headline)
                 Spacer()
             }
 
             Group {
                 content
             }.padding([.leading, .bottom, .trailing])
-        }.border(Color.gray, cornerRadius: 5)
+        }.border(Color.gray).cornerRadius(5)
     }
 }
 

@@ -3,7 +3,7 @@ import SwiftUI
 struct ContentView : View {
     var body: some View {
         NavigationView {
-            TabbedView {
+            TabView {
                 ProgressOverview()
                     .tag(0)
                     .tabItem {
